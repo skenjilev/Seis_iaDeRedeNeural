@@ -40,11 +40,19 @@ public class Main {
 
             Scanner scanner = new Scanner(System.in);
             String traindurs = scanner.nextLine();
-            if (traindurs.equalsIgnoreCase("end")) {
-                break;
-            } else {
-                traindur = Integer.parseInt(traindurs);
+            try {
+                if (traindurs.equalsIgnoreCase("end") | traindurs.equalsIgnoreCase("fim") | traindurs.equalsIgnoreCase("parar") | traindurs.equalsIgnoreCase("para")) {
+                    break;
+                } else {
+                    traindur = Integer.parseInt(traindurs);
+                }
+            } catch (Exception e) {
+                Exception exception = new Exception("Erro ao pegar a duração do treino");
+                System.out.println(exception.getMessage());
+                System.out.println(' ');
+                traindur = 1;
             }
+
 
             for (int loop = 1; loop <= traindur; loop++) {
                 switch ((int) (Math.random() * 10)) {
