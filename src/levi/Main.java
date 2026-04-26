@@ -18,8 +18,8 @@ public class Main {
         Neuronio neub = null;
 
         double res;
-        double pesoa = 0;
-        double pesob = 0;
+        double pesoa;
+        double pesob;
         double rppa;
         double rppb;
         double aValor;
