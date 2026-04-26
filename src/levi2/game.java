@@ -40,7 +40,7 @@ public class game {
                     case "q": valores[i] = 5; break;
                     case "j": valores[i] = 6; break;
                     case "k": valores[i] = 7; break;
-                    case "a": valores[i] = 8; break;
+                    case "a", "1": valores[i] = 8; break;
                     case "2": valores[i] = 9; break;
                     case "3": valores[i] = 10; break;
                     case "ouro", "ouros": valores[i] = 11; break;
@@ -66,5 +66,14 @@ public class game {
             double resfinal = rppa + rppb;
 
             int rng = generator.nextInt(100) + 1;
+            System.out.println(resfinal);
+            System.out.println(' ');
+            if (rng <= resfinal) {
+                System.out.println("apostar");
+            } else if (rng <= resfinal * 2) {
+                System.out.println("carta alta");
+            } else {
+                System.out.println("carta baixa");
+            }
     }
 }
