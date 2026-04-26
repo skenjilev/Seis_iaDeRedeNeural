@@ -1,4 +1,4 @@
-<html>
+<html lang="pt">
         <body>
                 <h1>
                         "Seis" é uma ia de truco que usa rede neural

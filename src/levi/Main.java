@@ -41,7 +41,11 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String traindurs = scanner.nextLine();
             try {
-                if (traindurs.equalsIgnoreCase("end") | traindurs.equalsIgnoreCase("fim") | traindurs.equalsIgnoreCase("parar") | traindurs.equalsIgnoreCase("para")) {
+                if (traindurs.equalsIgnoreCase("end")
+                        | traindurs.equalsIgnoreCase("fim")
+                        | traindurs.equalsIgnoreCase("parar")
+                        | traindurs.equalsIgnoreCase("para"))
+                {
                     break;
                 } else {
                     traindur = Integer.parseInt(traindurs);
@@ -174,7 +178,8 @@ public class Main {
             double percPerto = (loops > 0) ? ((double) pertos / loops) * 100 : 0;
             double percLonge = (loops > 0) ? ((double) longe / loops) * 100 : 0;
 
-            System.out.println("Acertos: " + percAcerto + "%" + " | Pertos: " + percPerto + "%" + " | Longes: " + percLonge + "%");
+            System.out.println("Acertos: " + percAcerto + "%" + " | Pertos: "
+                    + percPerto + "%" + " | Longes: " + percLonge + "%");
 
             assert neua != null;
             double[] neuar = neua.finalizar();
