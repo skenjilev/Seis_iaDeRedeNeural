@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
 
 public class Trainer {
     public static void main(String[] args) throws IOException {
@@ -24,10 +25,13 @@ public class Trainer {
             double pesob;
             double rppa;
             double rppb;
-            double aValor;
-            double bValor;
-            double cValor;
-            double dValor;
+            double valor;
+            double[] valoresPreR = new double[3];
+            double[] valoresPosR = new double[3];
+
+            valoresPosR[0] = 0;
+            valoresPosR[1] = 0;
+            valoresPosR[2] = 0;
 
             Neuronio neuronioa = new Neuronio();
             Neuronio neuroniob = new Neuronio();
@@ -61,65 +65,91 @@ public class Trainer {
             for (int loop = 1; loop <= traindur; loop++) {
                 switch ((int) (Math.random() * 10)) {
                     case 1:
-                        aValor = 14;
-                        bValor = 9;
-                        cValor = 2;
-                        dValor = 25;
+                        valoresPreR[0] = 14;
+                        valoresPreR[1] = 9;
+                        valoresPreR[2] = 2;
+                        valor = 25;
                         res = 75;
                         break;
                     case 2:
-                        aValor = 2;
-                        bValor = 12;
-                        cValor = 14;
-                        dValor = 0;
+                        valoresPreR[0] = 2;
+                        valoresPreR[1] = 12;
+                        valoresPreR[2] = 14;
+                        valor = 0;
                         res = 100;
                         break;
                     case 3:
-                        aValor = 10;
-                        bValor = 1;
-                        cValor = 10;
-                        dValor = 10;
+                        valoresPreR[0] = 10;
+                        valoresPreR[1] = 1;
+                        valoresPreR[2] = 10;
+                        valor = 10;
                         res = 80;
                         break;
                     case 4:
-                        aValor = 9;
-                        bValor = 7;
-                        cValor = 5;
-                        dValor = 50;
+                        valoresPreR[0] = 9;
+                        valoresPreR[1] = 7;
+                        valoresPreR[2] = 5;
+                        valor = 50;
                         res = 50;
                         break;
                     case 5:
-                        aValor = 13;
-                        bValor = 1;
-                        cValor = 5;
-                        dValor = 75;
+                        valoresPreR[0] = 13;
+                        valoresPreR[1] = 1;
+                        valoresPreR[2] = 5;
+                        valor = 75;
                         res = 90;
                         break;
                     case 6:
-                        aValor = 2;
-                        bValor = 5;
-                        cValor = 2;
-                        dValor = 0;
+                        valoresPreR[0] = 2;
+                        valoresPreR[1] = 5;
+                        valoresPreR[2] = 2;
+                        valor = 0;
                         res = 10;
                         break;
                     case 7:
-                        aValor = 1;
-                        bValor = 4;
-                        cValor = 7;
-                        dValor = 50;
+                        valoresPreR[0] = 1;
+                        valoresPreR[1] = 4;
+                        valoresPreR[2] = 7;
+                        valor = 50;
+                        res = 30;
+                        break;
+                    case 8:
+                        valoresPreR[0] = 1;
+                        valoresPreR[1] = 3;
+                        valoresPreR[2] = 5;
+                        valor = 100;
+                        res = 60;
+                        break;
+                    case 9:
+                        valoresPreR[0] = 7;
+                        valoresPreR[1] = 1;
+                        valoresPreR[2] = 4;
+                        valor = 75;
                         res = 30;
                         break;
                     default:
-                        aValor = 12;
-                        bValor = 9;
-                        cValor = 3;
-                        dValor = 35;
+                        valoresPreR[0] = 12;
+                        valoresPreR[1] = 9;
+                        valoresPreR[2] = 3;
+                        valor = 35;
                         res = 70;
                         break;
                 }
+                RandomGenerator generator = RandomGenerator.of("L128X256MixRandom");
+                System.arraycopy(valoresPreR, 0, valoresPosR, 0, 3);
 
-                neuronioa.Neuroniar(aValor, bValor, cValor, dValor, "a");
-                neuroniob.Neuroniar(aValor, bValor, cValor, dValor, "b");
+                for (int i = valoresPosR.length - 1; i > 0; i--) {
+                    int j = generator.nextInt(i + 1);
+                    int temp = (int) valoresPosR[i];
+                    valoresPosR[i] = valoresPosR[j];
+                    valoresPosR[j] = temp;
+                }
+                for (int i = 0; i < 3; i++) {
+                    System.out.println(valoresPosR[i]);
+                }
+
+                neuronioa.Neuroniar(valoresPreR[0], valoresPreR[1], valoresPreR[2], valor, "a");
+                neuroniob.Neuroniar(valoresPreR[0], valoresPreR[1], valoresPreR[2], valor, "b");
 
                 double ra = neuronioa.processar();
                 double rpa = json.optDouble("rpa", Math.random());

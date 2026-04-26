@@ -14,6 +14,7 @@ public class game {
             String content = new String(Files.readAllBytes(caminho));
             JSONObject json = new JSONObject(content);
 
+
             double rppa;
             double rppb;
             double[] valores = new double[4];
@@ -23,6 +24,7 @@ public class game {
 
             Scanner scanner = new Scanner(System.in);
             String[] cartas = new String[3];
+            System.out.println("Cartas:");
             cartas[0] = scanner.nextLine();
             cartas[1] = scanner.nextLine();
             cartas[2] = scanner.nextLine();
@@ -45,6 +47,8 @@ public class game {
                     case "zap", "pau", "paus": valores[i] = 14; break;
                 }
             }
+            System.out.println("Parceiro");
+            valores[3] = Double.parseDouble(scanner.nextLine());
 
             neuronioa.Neuroniar(valores[0], valores[1], valores[2], valores[3], "a");
             neuroniob.Neuroniar(valores[0], valores[1], valores[2], valores[3], "b");
