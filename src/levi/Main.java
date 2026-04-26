@@ -128,7 +128,9 @@ public class Main {
             json.put("rpb", pesob);
 
             if ((int)(erro) == 0) {zeros++;}
-            if ((int)(Math.sqrt(Math.pow(erro, 2))) < 19 && Math.sqrt(Math.pow(erro, 2)) != 0) {pertos++;}
+            boolean bas = (int)(Math.sqrt(Math.pow(erro, 2))) < 19;
+            boolean aas = (int)(Math.sqrt(Math.pow(erro, 2))) != 0;
+            if (bas && aas) {pertos++;}
             if ((int)(Math.sqrt(Math.pow(erro, 2))) >= 20) {longe++;}
 
             System.out.println("Loop: " + loop +
