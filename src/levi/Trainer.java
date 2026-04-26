@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class Main {
+public class Trainer {
     public static void main(String[] args) throws IOException {
         while (true) {
             Path caminho = Paths.get("src", "levi", "pesos.json");
@@ -117,7 +117,6 @@ public class Main {
                         res = 70;
                         break;
                 }
-
 
                 neuronioa.Neuroniar(aValor, bValor, cValor, dValor, "a");
                 neuroniob.Neuroniar(aValor, bValor, cValor, dValor, "b");
