@@ -144,9 +144,6 @@ public class Trainer {
                     valoresPosR[i] = valoresPosR[j];
                     valoresPosR[j] = temp;
                 }
-                for (int i = 0; i < 3; i++) {
-                    System.out.println(valoresPosR[i]);
-                }
 
                 neuronioa.Neuroniar(valoresPreR[0], valoresPreR[1], valoresPreR[2], valor, "a");
                 neuroniob.Neuroniar(valoresPreR[0], valoresPreR[1], valoresPreR[2], valor, "b");
@@ -182,7 +179,7 @@ public class Trainer {
                 if ((int) (erro) == 0) {
                     zeros++;
                 }
-                boolean bas = (int) (Math.sqrt(Math.pow(erro, 2))) < 19;
+                boolean bas = (int) (Math.sqrt(Math.pow(erro, 2))) <= 19;
                 boolean aas = (int) (Math.sqrt(Math.pow(erro, 2))) != 0;
                 if (bas && aas) {
                     pertos++;
@@ -191,7 +188,7 @@ public class Trainer {
                     longe++;
                 }
 
-                System.out.println("Loop: " + loop +
+                System.out.println("Loop: " + (loop) +
                         " | Previsão: " + resfinal +
                         " | Erro: " + erro +
                         " | Resultado: " + res +

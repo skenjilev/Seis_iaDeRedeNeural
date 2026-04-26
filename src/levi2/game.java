@@ -7,12 +7,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
 
 public class game {
     public static void main(String[] args) throws IOException {
             Path caminho = Paths.get("src", "levi", "pesos.json");
             String content = new String(Files.readAllBytes(caminho));
             JSONObject json = new JSONObject(content);
+            RandomGenerator generator = RandomGenerator.of("L128X256MixRandom");
 
 
             double rppa;
@@ -30,7 +32,7 @@ public class game {
             cartas[2] = scanner.nextLine();
 
             for (int i = 0; i < 3; i++) {
-                switch (cartas[i]) {
+                switch (cartas[i].toLowerCase()) {
                     case "4": valores[i] = 1; break;
                     case "5": valores[i] = 2; break;
                     case "6": valores[i] = 3; break;
@@ -63,6 +65,6 @@ public class game {
             rppb = rb * rpb;
             double resfinal = rppa + rppb;
 
-            System.out.println(resfinal);
+            int rng = generator.nextInt(100) + 1;
     }
 }
