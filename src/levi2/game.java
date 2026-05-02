@@ -1,6 +1,7 @@
 package levi2;
 
 import org.json.JSONObject;
+import levi.Neuronio;
 
 import java.io.IOException;
 import java.nio.file.Files;

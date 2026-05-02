@@ -1,6 +1,7 @@
 package levi;
 
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,25 +49,25 @@ public class Neuronio {
 
     public double processar() {
         try {
-            Valor1a = json.getDouble("p1" + id);
+            Valor1a = json.getDouble("p" + id);
             Valor1 *= Valor1a;
         } catch (Exception e) {
             Valor1 = Math.random();
-            System.out.println("erro ao tentar pegar p1" + id);
+            System.out.println("erro ao tentar pegar p" + id);
         }
         try {
-            Valor2a = json.getDouble("p2" + id);
+            Valor2a = json.getDouble("p" + id);
             Valor2 *= Valor2a;
         } catch (Exception e) {
             Valor2 = Math.random();
-            System.out.println("erro ao tentar pegar p2" + id);
+            System.out.println("erro ao tentar pegar p" + id);
         }
         try {
-            Valor3a = json.getDouble("p3" + id);
+            Valor3a = json.getDouble("p" + id);
             Valor3 *= Valor3a;
         } catch (Exception e) {
             Valor3 = Math.random();
-            System.out.println("erro ao tentar pegar p3" + id);
+            System.out.println("erro ao tentar pegar p" + id);
         }
         try {
             Valor4a = json.getDouble("p4" + id);
@@ -84,19 +85,15 @@ public class Neuronio {
         return Valor1 + Valor2 + Valor3 + Valorv;
     }
     public void consertar(double erro) {
-        json.put("p1" + id, Valor1a + 0.00001 * erro * Valor1aa);
-        json.put("p2" + id, Valor2a + 0.00001 * erro * Valor2aa);
-        json.put("p3" + id, Valor3a + 0.00001 * erro * Valor3aa);
+        json.put("p" + id, ((Valor1a + Valor2a + Valor3a) / 3) + 0.00001 * erro * ((Valor1aa + Valor2aa + Valor3aa) / 3));
         json.put("p4" + id, Valor4a + 0.00001 * erro * Valor4aa);
         json.put("v1" + id, Valorv + 0.00001 * erro);
     }
     public double[] finalizar() {
-        double[] resposta = new double[5];
-        resposta[0] = json.getDouble("p1" + id);
-        resposta[1] = json.getDouble("p2" + id);
-        resposta[2] = json.getDouble("p3" + id);
-        resposta[3] = json.getDouble("v1" + id);
-        resposta[4] = json.getDouble("p4" + id);
+        double[] resposta = new double[3];
+        resposta[0] = json.getDouble("p" + id);
+        resposta[1] = json.getDouble("v1" + id);
+        resposta[2] = json.getDouble("p4" + id);
         return resposta;
     }
 }

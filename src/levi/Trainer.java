@@ -211,17 +211,13 @@ public class Trainer {
             double[] neuar = neua.finalizar();
             double[] neubr = neub.finalizar();
 
-            json.put("p1a", neuar[0]);
-            json.put("p2a", neuar[1]);
-            json.put("p3a", neuar[2]);
-            json.put("p4a", neuar[4]);
-            json.put("v1a", neuar[3]);
+            json.put("pa", neuar[0]);
+            json.put("p4a", neuar[2]);
+            json.put("v1a", neuar[1]);
 
-            json.put("p1b", neubr[0]);
-            json.put("p2b", neubr[1]);
-            json.put("p3b", neubr[2]);
-            json.put("p4b", neubr[4]);
-            json.put("v1b", neubr[3]);
+            json.put("pb", neubr[0]);
+            json.put("p4b", neubr[2]);
+            json.put("v1b", neubr[1]);
 
             FileWriter fileWriter = new FileWriter(caminho.toFile());
             fileWriter.write(json.toString(4));
