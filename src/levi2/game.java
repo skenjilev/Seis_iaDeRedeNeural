@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.random.RandomGenerator;
 
@@ -28,11 +29,9 @@ public class game {
             Scanner scanner = new Scanner(System.in);
             String[] cartas = new String[3];
             System.out.println("Cartas:");
-            cartas[0] = scanner.nextLine();
-            cartas[1] = scanner.nextLine();
-            cartas[2] = scanner.nextLine();
 
             for (int i = 0; i < 3; i++) {
+                cartas[i] = scanner.nextLine();
                 switch (cartas[i].toLowerCase()) {
                     case "4": valores[i] = 1; break;
                     case "5": valores[i] = 2; break;
@@ -69,11 +68,11 @@ public class game {
 
             int rng = generator.nextInt(100) + 1;
             System.out.println(resfinal);
-            System.out.println(' ');
+            System.out.println(rng);
             if (rng <= resfinal / 2) {
                 System.out.println("apostar");
             } else {
-                System.out.println("Carta da mesa porfavor ('n' para nenhuma)");
+                System.out.println("Carta da mesa porfavor ('n' para nenhuma ou se é a do parceiro que está ganhando)");
                 String carta = scanner.nextLine();
                 int cartaV;
                 switch (carta) {
@@ -94,8 +93,14 @@ public class game {
                     case "n": cartaV = 0; break;
                     default: cartaV = 0; System.out.println("erro pegando \"Nenhuma\"");
                 }
-                if (cartaV > valores[0]) {
+                double maior = Math.max(valores[0], valores[1]);
+                maior = Math.max(maior, valores[2]);
+                if (cartaV < maior) {
+                    System.out.println("Maior carta");
+                } else if (cartaV == maior) {
 
+                } else {
+                    System.out.println("Carta baixa");
                 }
             }
     }
