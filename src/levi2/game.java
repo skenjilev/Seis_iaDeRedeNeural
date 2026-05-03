@@ -48,6 +48,7 @@ public class game {
                     case "espada", "espadas": valores[i] = 12; break;
                     case "copa", "copas": valores[i] = 13; break;
                     case "zap", "pau", "paus": valores[i] = 14; break;
+                    default: System.out.println("erro, fale denovo a carta"); i--;
                 }
             }
             System.out.println("Parceiro");
@@ -69,12 +70,33 @@ public class game {
             int rng = generator.nextInt(100) + 1;
             System.out.println(resfinal);
             System.out.println(' ');
-            if (rng <= resfinal) {
+            if (rng <= resfinal / 2) {
                 System.out.println("apostar");
-            } else if (rng <= resfinal * 2) {
-                System.out.println("carta alta");
             } else {
-                System.out.println("carta baixa");
+                System.out.println("Carta da mesa porfavor ('n' para nenhuma)");
+                String carta = scanner.nextLine();
+                int cartaV;
+                switch (carta) {
+                    case "4": cartaV = 1; break;
+                    case "5": cartaV = 2; break;
+                    case "6": cartaV = 3; break;
+                    case "7": cartaV = 4; break;
+                    case "q": cartaV = 5; break;
+                    case "j": cartaV = 6; break;
+                    case "k": cartaV = 7; break;
+                    case "a", "1": cartaV = 8; break;
+                    case "2": cartaV = 9; break;
+                    case "3": cartaV = 10; break;
+                    case "ouro", "ouros": cartaV = 11; break;
+                    case "espada", "espadas": cartaV = 12; break;
+                    case "copa", "copas": cartaV = 13; break;
+                    case "zap", "pau", "paus": cartaV = 14; break;
+                    case "n": cartaV = 0; break;
+                    default: cartaV = 0; System.out.println("erro pegando \"Nenhuma\"");
+                }
+                if (cartaV > valores[0]) {
+
+                }
             }
     }
 }
